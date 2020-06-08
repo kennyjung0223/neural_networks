@@ -106,6 +106,18 @@ def model(X, Y, n_x, n_h, n_y, num_of_iters, learning_rate):
 
 	return parameters
 
+def predict(X, parameters):
+	a2, cache = forward_prop(X, parameters)
+	yhat = a2
+	yhat = np.squeeze(yhat)
+
+	if yhat >= 0.5:
+		y_predict = 1
+	else:
+		y_predict = 0
+
+	return y_predict
+
 
 
 
