@@ -88,3 +88,24 @@ def update_parameters(parameters, grads, learning_rate):
 	}
 
 	return new_parameters
+
+def model(X, Y, n_x, n_h, n_y, num_of_iters, learning_rate):
+	parameters = initialize_parameters(n_x, n_h, n_y)
+
+	for i in range(num_of_iters + 1):
+		a2, cache = forward_prop(X, parameters)
+
+		cost = calculate_cost(a2, Y)
+
+		grads = backward_prop(X, Y, cache, parameters)
+
+		parameters = update_parameters(parameters, grads, learning_rate)
+
+		if i % 100 == 0:
+			print("Cost after iteration# {:d}: {:f}".format(i, cost))
+
+	return parameters
+
+
+
+
