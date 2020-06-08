@@ -41,3 +41,25 @@ def calculate_cost(A2, Y):
 	cost = np.squeeze(cost)
 
 	return cost
+
+def backward_prop(X, Y, cache, parameters):
+	A1 = cache["A1"]
+	A2 = cache["A2"]
+
+	W2 = parameters["W2"]
+
+	dZ2 = A2 - Y
+	dW2 = np.dot(dZ2, A1.T)/m
+	db2 = np.sum(dZ2, axis=1, keepdims=True)/m
+	dZ1 = np.multiply(np.dot(W2.T, dZ2), 1-np.power(A1, 2))
+	dW1 = np.dot(dZ1, X.T)/m
+	db1 = np.sum(dZ1, axis=1, keepdims=True)/m
+
+	grads = {
+		"dW1": dW1,
+		"db1": db1,
+		"dW2": dw2,
+		"db2": db2,
+	}
+
+	return grads
