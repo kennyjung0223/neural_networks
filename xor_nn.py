@@ -63,3 +63,28 @@ def backward_prop(X, Y, cache, parameters):
 	}
 
 	return grads
+
+def update_parameters(parameters, grads, learning_rate):
+	W1 = parameters["W1"]
+	b1 = parameters["b1"]
+	W2 = parameters["W2"]
+	b2 = parameters["b2"]
+
+	dW1 = grads["W1"]
+	db1 = grads["db1"]
+	dW2 = grads["W2"]
+	db2 = grads["db2"]
+
+	W1 = W1 - learning_rate*dW1
+	b1 = b1 - learning_rate*db1
+	W2 = W2 - learning_rate*dW2
+	b2 = b2 - learning_rate*db2
+
+	new_parameters = {
+		"W1": W1,
+		"W2": W2,
+		"b1": b1,
+		"b2": b2,
+	}
+
+	return new_parameters
