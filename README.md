@@ -1,4 +1,4 @@
-# simple_neural_network
+# neural_networks
 
 learning how to 
 * implement a simple neural network from scratch and tensorflow + keras
