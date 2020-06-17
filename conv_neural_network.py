@@ -38,6 +38,7 @@ model.add(layers.Dense(10, activation='softmax'))
 
 mnist = tf.keras.datasets.mnist
 (train_images, train_labels), (test_images, test_labels) = mnist.load_data()
+print(train_labels[0])
 
 # print(train_images.shape)	# (60000, 28, 28)
 # print(train_labels.shape)	# (60000,)
@@ -60,6 +61,9 @@ model.fit(train_images, train_labels, batch_size=100, epochs=5, verbose=1)
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 
 print('Test accuracy:', test_acc)
+
+predictions = model.predict(test_images)
+print(predictions[0])
 
 
 
